@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="749.0" prefWidth="1232.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DisplayAllCustomerFormController">
+   <children>
+      <TableView fx:id="tblCustomer" layoutX="30.0" layoutY="118.0" prefHeight="565.0" prefWidth="1170.0" stylesheets="@../Styles/Style.css">
+        <columns>
+          <TableColumn fx:id="colCustomerId" prefWidth="115.0" text="Customer Id" />
+          <TableColumn fx:id="colCustomerTitle" prefWidth="151.0" text="Customer Title" />
+            <TableColumn fx:id="colCustomerName" prefWidth="160.0" text="Customer Name" />
+            <TableColumn fx:id="colCustomerAddress" prefWidth="177.0" text="Customer Address" />
+            <TableColumn fx:id="colCity" prefWidth="160.0" text="City" />
+            <TableColumn fx:id="colProvince" prefWidth="243.0" text="Province" />
+            <TableColumn fx:id="colPostalCode" prefWidth="162.0" text="Postal Code" />
+        </columns>
+      </TableView>
+      <Label alignment="CENTER" prefHeight="70.0" prefWidth="1232.0" styleClass="gradMovableItem" stylesheets="@../Styles/StyleForAnchopane.css" text=" Customers" underline="true">
+         <font>
+            <Font name="Britannic Bold" size="33.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.9951456310679612">
+               <stops>
+                  <Stop color="#dd24bb" />
+                  <Stop color="#0b76e1" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+   </children>
+</AnchorPane>

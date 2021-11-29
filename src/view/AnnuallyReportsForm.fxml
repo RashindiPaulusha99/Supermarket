@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="reportsContext" prefHeight="787.0" prefWidth="1104.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AnnuallyReportsFormController">
+   <children>
+      <Label alignment="CENTER" prefHeight="66.0" prefWidth="1104.0" styleClass="gradMovableItem" stylesheets="@../Styles/StyleForAnchopane.css" text="Income Reports" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="28.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutY="95.0" prefHeight="692.0" prefWidth="1104.0" styleClass="gradReports" stylesheets="@../Styles/StyleForAnchopane.css">
+         <children>
+            <TableView fx:id="tblIncomeDetails" layoutX="24.0" layoutY="194.0" prefHeight="389.0" prefWidth="1038.0" stylesheets="@../Styles/Style.css">
+               <columns>
+                  <TableColumn fx:id="colOrderId" prefWidth="196.0" text="OrderId" />
+                  <TableColumn fx:id="colCustomerId" prefWidth="203.0" text="CustomerId" />
+                  <TableColumn fx:id="colOrderTime" prefWidth="321.0" text="OrderTime" />
+                  <TableColumn fx:id="colCost" prefWidth="317.0" text="Cost" />
+               </columns>
+            </TableView>
+            <Label layoutX="618.0" layoutY="590.0" prefHeight="31.0" prefWidth="117.0" text="Net Amount :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTotal" layoutX="747.0" layoutY="589.0" prefHeight="30.0" prefWidth="314.0" text="0.00/=" textFill="#e11f1f">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutY="-1.0" prefHeight="74.0" prefWidth="549.0" style="-fx-background-color: white;">
+               <children>
+                  <JFXButton layoutX="9.0" layoutY="13.0" onAction="#dailyIncomeOnAction" prefHeight="49.0" prefWidth="254.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Daily">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="283.0" layoutY="13.0" onAction="#monthlyIncomeOnAction" prefHeight="49.0" prefWidth="254.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Monthly">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <Line endX="215.0" layoutX="846.0" layoutY="624.0" startX="-100.0" />
+            <Line endX="100.0" layoutX="645.0" layoutY="625.0" startX="100.0" startY="-42.0" />
+            <Line endX="100.0" layoutX="961.0" layoutY="623.0" startX="100.0" startY="-42.0" />
+            <AnchorPane layoutX="24.0" layoutY="100.0" prefHeight="66.0" prefWidth="781.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+               <children>
+                  <Label alignment="CENTER" layoutX="14.0" layoutY="15.0" prefHeight="37.0" prefWidth="138.0" style="-fx-background-radius: 10;" styleClass="gradMovableItem" stylesheets="@../Styles/StyleForAnchopane.css" text="Start Date  :">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="415.0" layoutY="15.0" prefHeight="37.0" prefWidth="138.0" style="-fx-background-radius: 10;" styleClass="gradMovableItem" stylesheets="@../Styles/StyleForAnchopane.css" text="End Date  :">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <JFXDatePicker fx:id="startDatePicker" defaultColor="#8f008c" layoutX="164.0" layoutY="18.0" />
+                  <JFXDatePicker fx:id="endDatePicker" defaultColor="#8f008c" layoutX="565.0" layoutY="18.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="826.0" prefHeight="74.0" prefWidth="278.0" style="-fx-background-color: white;">
+               <children>
+                  <JFXButton layoutX="11.0" layoutY="13.0" onAction="#customerWiseIncomeOnAction" prefHeight="49.0" prefWidth="254.0" style="-fx-border-color: black; -fx-border-width: 2;" text="CustomerWise">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <JFXButton layoutX="560.0" layoutY="13.0" prefHeight="49.0" prefWidth="254.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Annually">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="billContext" prefHeight="850.0" prefWidth="1436.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FinalBillFormController">
+   <children>
+      <Label fx:id="lblPayment" layoutX="842.0" layoutY="518.0" prefHeight="21.0" prefWidth="112.0" text="Payment " />
+      <Line endX="479.0" endY="-7.62939453125E-6" layoutX="541.0" layoutY="14.0" startX="-106.0" startY="-7.62939453125E-6" />
+      <Line endX="480.0" layoutX="543.0" layoutY="829.0" startX="-107.0" />
+      <Line endX="470.5" endY="-4.5" layoutX="552.0" layoutY="19.0" startX="471.5" startY="810.5" />
+      <Line endX="472.5" endY="-4.5" layoutX="-36.0" layoutY="19.0" startX="471.5" startY="809.5" />
+      <Label alignment="CENTER" layoutX="446.0" layoutY="24.0" prefHeight="36.0" prefWidth="570.0" text="R&amp;P Wholesale Distributors" underline="true">
+         <font>
+            <Font name="STLiti" size="29.0" />
+         </font>
+      </Label>
+      <Separator layoutX="435.0" layoutY="74.0" prefHeight="1.0" prefWidth="586.0" />
+      <Label layoutX="441.0" layoutY="76.0" prefHeight="21.0" prefWidth="580.0" text="                                      No   :   4  /  2   ,   ABC   Road   ,    Galle" />
+      <Label layoutX="440.0" layoutY="99.0" prefHeight="21.0" prefWidth="580.0" text="                                                     (+94)718220009" />
+      <Label layoutX="440.0" layoutY="120.0" prefHeight="21.0" prefWidth="580.0" text="                                             R&amp;PDistributors@gmail.com" />
+      <Label fx:id="lblBillDate" layoutX="457.0" layoutY="143.0" prefHeight="28.0" prefWidth="180.0" text="date " />
+      <Label fx:id="lblBillTime" layoutX="647.0" layoutY="143.0" prefHeight="28.0" prefWidth="172.0" text="time" />
+      <Label fx:id="lblBillId" layoutX="846.0" layoutY="143.0" prefHeight="28.0" prefWidth="157.0" text="OI-" />
+      <Separator layoutX="437.0" layoutY="179.0" prefHeight="1.0" prefWidth="586.0" />
+      <TableView fx:id="tblBillDetails" layoutX="446.0" layoutY="191.0" prefHeight="230.0" prefWidth="570.0">
+        <columns>
+          <TableColumn fx:id="colItemCode" prefWidth="121.0" text="ItemCode" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="169.0" text="UnitPrice" />
+            <TableColumn fx:id="colQTY" prefWidth="89.0" text="QTY" />
+            <TableColumn fx:id="colAmount" prefWidth="190.0" text="Amount" />
+        </columns>
+      </TableView>
+      <Separator layoutX="435.0" layoutY="434.0" prefHeight="1.0" prefWidth="586.0" />
+      <Label layoutX="447.0" layoutY="485.0" prefHeight="21.0" prefWidth="123.0" text="Net Amount       :" />
+      <Label layoutX="447.0" layoutY="518.0" prefHeight="21.0" prefWidth="123.0" text="Payment             :" />
+      <Label fx:id="lblNetAmount" layoutX="842.0" layoutY="485.0" prefHeight="21.0" prefWidth="112.0" text="0.00" />
+      <Separator layoutX="437.0" layoutY="559.0" prefHeight="1.0" prefWidth="586.0" />
+      <Separator layoutX="437.0" layoutY="644.0" prefHeight="1.0" prefWidth="586.0" />
+      <Label layoutX="599.0" layoutY="574.0" prefHeight="21.0" prefWidth="234.0" text="Thank    You    For  Visit   Here " />
+      <Label layoutX="637.0" layoutY="604.0" prefHeight="21.0" prefWidth="134.0" text="Please Come Again" />
+      <Label layoutX="513.0" layoutY="663.0" prefHeight="25.0" prefWidth="172.0" text="IMPORTANT NOTICE  :">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="693.0" layoutY="663.0" prefHeight="25.0" prefWidth="251.0" text="In   case   of   price   discrepancy ,">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="504.0" layoutY="694.0" prefHeight="25.0" prefWidth="454.0" text=" return   the   item   &amp;   bill   within   7   days   for   difference .">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="893.0" layoutY="761.0" onAction="#printOnAction" prefHeight="45.0" prefWidth="104.0" style="-fx-background-color: #06cc63;" text="PRINT" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <Separator layoutX="437.0" layoutY="743.0" prefHeight="1.0" prefWidth="586.0" />
+      <JFXButton buttonType="RAISED" layoutX="452.0" layoutY="761.0" onAction="#openPlaceOrderForm" prefHeight="36.0" prefWidth="104.0" style="-fx-background-color: white; -fx-border-color: #06cc63; -fx-border-width: 2;" text="Back" textFill="#06cc63">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font size="19.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="447.0" layoutY="453.0" prefHeight="21.0" prefWidth="180.0" text="Gross Amount    :" />
+      <Label fx:id="lblGrossAmount" layoutX="842.0" layoutY="453.0" prefHeight="21.0" prefWidth="112.0" text="0.00" />
+      <Label layoutX="958.0" layoutY="472.0" text="/=" />
+      <Label layoutX="958.0" layoutY="505.0" text="/=" />
+   </children>
+</AnchorPane>

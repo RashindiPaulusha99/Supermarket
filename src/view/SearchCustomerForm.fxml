@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="676.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchCustomerFormController">
+   <children>
+      <ImageView fitHeight="676.0" fitWidth="602.0" opacity="0.14" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/images%20(1).png" />
+         </image>
+      </ImageView>
+      <JFXButton buttonType="RAISED" layoutX="371.0" layoutY="599.0" onAction="#searchCustomerOnAction" prefHeight="49.0" prefWidth="188.0" style="-fx-background-color: #0be881; -fx-background-radius: 30;" text="SEARCH" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+         <font>
+            <Font name="Consolas Bold" size="27.0" />
+         </font>
+      </JFXButton>
+      <Label alignment="CENTER" layoutY="-2.0" prefHeight="73.0" prefWidth="602.0" styleClass="gradMovableItem" stylesheets="@../Styles/StyleForAnchopane.css" text="Search Customer" underline="true">
+         <font>
+            <Font name="Britannic Bold" size="33.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.9951456310679612">
+               <stops>
+                  <Stop color="#dd24bb" />
+                  <Stop color="#0b76e1" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <AnchorPane layoutX="54.0" layoutY="454.0" prefHeight="49.0" prefWidth="502.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtProvince" layoutX="5.0" layoutY="4.0" prefHeight="41.0" prefWidth="491.0" promptText="Province :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="54.0" layoutY="527.0" prefHeight="49.0" prefWidth="502.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtPostalCode" layoutX="9.0" layoutY="5.0" prefHeight="41.0" prefWidth="484.0" promptText="Postal Code :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="54.0" layoutY="382.0" prefHeight="49.0" prefWidth="502.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtCity" layoutX="4.0" layoutY="4.0" prefHeight="41.0" prefWidth="491.0" promptText="City :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="54.0" layoutY="309.0" prefHeight="49.0" prefWidth="502.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtAddress" layoutX="5.0" layoutY="5.0" prefHeight="41.0" prefWidth="491.0" promptText="Customer Address :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="54.0" layoutY="239.0" prefHeight="49.0" prefWidth="502.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtName" layoutX="6.0" layoutY="4.0" prefHeight="41.0" prefWidth="491.0" promptText="Customer Name :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="54.0" layoutY="168.0" prefHeight="49.0" prefWidth="502.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtTitle" layoutX="6.0" layoutY="4.0" prefHeight="41.0" prefWidth="491.0" promptText="Customer Title :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="54.0" layoutY="100.0" prefHeight="49.0" prefWidth="502.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtId" layoutX="4.0" layoutY="4.0" prefHeight="41.0" prefWidth="491.0" promptText="Customer Id :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

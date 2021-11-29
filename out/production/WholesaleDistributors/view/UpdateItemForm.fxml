@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="620.0" prefWidth="602.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateItemFormController">
+   <children>
+      <ImageView fitHeight="620.0" fitWidth="604.0" opacity="0.14" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/обновление-png-8.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnEdit" buttonType="RAISED" layoutX="372.0" layoutY="543.0" onAction="#updateItemOnAction" prefHeight="49.0" prefWidth="190.0" style="-fx-background-color: #55E6C1; -fx-background-radius: 30;" text="UPDATE" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+         <font>
+            <Font name="Consolas Bold" size="27.0" />
+         </font>
+      </JFXButton>
+      <Label alignment="CENTER" prefHeight="73.0" prefWidth="604.0" styleClass="gradMovableItem" stylesheets="@../Styles/StyleForAnchopane.css" text="Update Item" underline="true">
+         <font>
+            <Font name="Britannic Bold" size="33.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.9951456310679612">
+               <stops>
+                  <Stop color="#dd24bb" />
+                  <Stop color="#0b76e1" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <AnchorPane layoutX="50.0" layoutY="469.0" prefHeight="41.0" prefWidth="510.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtqtyOnHand" layoutX="5.0" layoutY="5.0" onKeyReleased="#qty_KeyReleased" prefHeight="41.0" prefWidth="502.0" promptText="Quantity On Hand :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="50.0" layoutY="395.0" prefHeight="41.0" prefWidth="510.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtDiscount" layoutX="4.0" layoutY="4.0" onKeyReleased="#discount_KeyReleased" prefHeight="41.0" prefWidth="502.0" promptText="Discount :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="49.0" layoutY="321.0" prefHeight="41.0" prefWidth="510.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtUnitPrice" layoutX="7.0" layoutY="4.0" onKeyReleased="#unitPrice_KeyReleased" prefHeight="41.0" prefWidth="502.0" promptText="Unit Price :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="49.0" layoutY="246.0" prefHeight="49.0" prefWidth="512.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtPackSize" layoutX="6.0" layoutY="5.0" onKeyReleased="#packSize_KeyReleased" prefHeight="41.0" prefWidth="502.0" promptText="Pack Size :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="49.0" layoutY="173.0" prefHeight="41.0" prefWidth="510.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <ComboBox fx:id="cmbDescription" layoutX="6.0" layoutY="6.0" prefHeight="41.0" prefWidth="502.0" promptText="Description :" styleClass="combo-box" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="49.0" layoutY="101.0" prefHeight="41.0" prefWidth="510.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtCode" layoutX="5.0" layoutY="4.0" onAction="#selectItemOnAction" prefHeight="41.0" prefWidth="502.0" promptText="Item Code :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

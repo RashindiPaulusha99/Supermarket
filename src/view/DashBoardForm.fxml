@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="dashBoardContext" prefHeight="956.0" prefWidth="1478.0" styleClass="gradMovableItem" stylesheets="@../Styles/StyleForAnchopane.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashBoardFormController">
+   <children>
+      <ImageView fitHeight="956.0" fitWidth="1480.0" layoutX="-1.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/ways-your-website-can-hurt-sales-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <JFXButton buttonType="RAISED" layoutX="1204.0" layoutY="841.0" onAction="#openLoginForm" prefHeight="56.0" prefWidth="223.0" style="-fx-background-color: black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 2; -fx-border-color: white;" text="Get Started  -&gt;" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow spread="0.04" />
+         </effect>
+      </JFXButton>
+      <ImageView fitHeight="95.0" fitWidth="99.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/237-2375114_warehouse-icon-blue-news-feed-icon-hd-png.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="29.0" layoutY="8.0" text="R&amp;P">
+         <font>
+            <Font name="Script MT Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="35.0" layoutY="57.0" style="-fx-rotate: -50;" text="R&amp;P">
+         <font>
+            <Font name="Script MT Bold" size="61.0" />
+         </font>
+      </Label>
+      <Label layoutX="9.0" layoutY="107.0" style="-fx-rotate: -50;" text="WHOLESALE">
+         <font>
+            <Font name="Algerian" size="41.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="139.0" style="-fx-rotate: -50;" text="Distributors">
+         <font>
+            <Font name="Algerian" size="41.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

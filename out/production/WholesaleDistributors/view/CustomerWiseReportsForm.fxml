@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="reportsContext" prefHeight="787.0" prefWidth="1104.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerWiseReportsFormController">
+   <children>
+      <Label alignment="CENTER" prefHeight="66.0" prefWidth="1104.0" styleClass="gradMovableItem" stylesheets="@../Styles/StyleForAnchopane.css" text="Income Reports" underline="true">
+         <font>
+            <Font name="Bookman Old Style Bold" size="28.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutY="95.0" prefHeight="692.0" prefWidth="1104.0" styleClass="gradReports" stylesheets="@../Styles/StyleForAnchopane.css">
+         <children>
+            <TableView fx:id="tblIncomeDetails" layoutX="32.0" layoutY="164.0" prefHeight="216.0" prefWidth="1038.0" stylesheets="@../Styles/Style.css">
+               <columns>
+                  <TableColumn fx:id="colOrderId" prefWidth="196.0" text="OrderId" />
+                  <TableColumn fx:id="colOrderDate" prefWidth="262.0" text="OrderDate" />
+                  <TableColumn fx:id="colOrderTime" prefWidth="262.0" text="OrderTime" />
+                  <TableColumn fx:id="colCost" prefWidth="317.0" text="Cost" />
+               </columns>
+            </TableView>
+            <Label layoutX="626.0" layoutY="386.0" prefHeight="31.0" prefWidth="117.0" text="Net Amount :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTotal" layoutX="755.0" layoutY="385.0" prefHeight="30.0" prefWidth="314.0" text="0.00/=" textFill="#e11f1f">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutY="-1.0" prefHeight="74.0" prefWidth="826.0" style="-fx-background-color: white;">
+               <children>
+                  <JFXButton layoutX="10.0" layoutY="13.0" onAction="#dailyIncomeOnAction" prefHeight="49.0" prefWidth="254.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Daily">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="283.0" layoutY="13.0" onAction="#MonthlyIncomeOnAction" prefHeight="49.0" prefWidth="254.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Monthly">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="558.0" layoutY="13.0" onAction="#annuallyIncomeOnAction" prefHeight="49.0" prefWidth="254.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Annually">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <Line endX="215.0" layoutX="854.0" layoutY="420.0" startX="-100.0" />
+            <Line endX="100.0" layoutX="653.0" layoutY="421.0" startX="100.0" startY="-42.0" />
+            <Line endX="100.0" layoutX="969.0" layoutY="419.0" startX="100.0" startY="-42.0" />
+            <AnchorPane layoutX="31.0" layoutY="85.0" prefHeight="66.0" prefWidth="292.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+               <children>
+                  <ComboBox fx:id="cmbCustomerId" layoutX="10.0" layoutY="11.0" prefHeight="43.0" prefWidth="271.0" promptText="Customer ID  :" style="-fx-background-radius: 15;" styleClass="gradMovableItem" stylesheets="@../Styles/StyleForAnchopane.css" />
+               </children>
+            </AnchorPane>
+            <TableView fx:id="tblItemDetails" layoutX="32.0" layoutY="444.0" prefHeight="216.0" prefWidth="1038.0" stylesheets="@../Styles/Style.css">
+              <columns>
+                <TableColumn fx:id="colItemCode" prefWidth="196.0" text="Item Code" />
+                <TableColumn fx:id="colUnitPrice" prefWidth="302.0" text="Unit Price" />
+                  <TableColumn fx:id="colQty" prefWidth="266.0" text="Sold Qty" />
+                  <TableColumn fx:id="colAmount" prefWidth="273.0" text="Amount" />
+              </columns>
+            </TableView>
+            <JFXButton layoutX="838.0" layoutY="13.0" prefHeight="49.0" prefWidth="254.0" style="-fx-border-color: black; -fx-border-width: 2;" text="Customerwise">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

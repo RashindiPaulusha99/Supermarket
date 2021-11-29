@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="694.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterFormController">
+   <children>
+      <Label alignment="CENTER" layoutX="163.0" layoutY="53.0" prefHeight="50.0" prefWidth="269.0" text="REGISTER FORM" underline="true">
+         <font>
+            <Font name="System Bold" size="34.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="#0ce8dd" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Separator layoutX="62.0" layoutY="78.0" prefHeight="3.0" prefWidth="88.0" />
+      <Separator layoutX="440.0" layoutY="80.0" prefHeight="3.0" prefWidth="88.0" />
+      <JFXCheckBox layoutX="107.0" layoutY="520.0" prefHeight="25.0" prefWidth="119.0" text="I accept the " unCheckedColor="BLACK">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXCheckBox>
+      <Label layoutX="226.0" layoutY="520.0" prefHeight="25.0" prefWidth="253.0" text="Tearms  Of Use &amp; Privacy Policy" textFill="#00a8ff" underline="true">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnRegister" buttonType="RAISED" layoutX="194.0" layoutY="583.0" onAction="#registerOnAction" prefHeight="57.0" prefWidth="198.0" style="-fx-background-color: #4cd137;" text="Register Now" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="lblError" layoutX="92.0" layoutY="471.0" prefHeight="21.0" prefWidth="430.0" textFill="#d31313">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="81.0" layoutY="142.0" prefHeight="50.0" prefWidth="436.0" styleClass="textPane" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtUserId" layoutX="19.0" layoutY="4.0" onKeyReleased="#user_KeyReleased" prefHeight="42.0" prefWidth="403.0" styleClass="textField" />
+            <Label fx:id="lblUserId" layoutX="24.0" layoutY="-12.0" prefHeight="25.0" prefWidth="64.0" styleClass="textLabel" text="UserID" textFill="#7f8c8d">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <AnchorPane layoutX="83.0" layoutY="230.0" prefHeight="50.0" prefWidth="436.0" styleClass="textPane" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtUsername" layoutX="19.0" layoutY="4.0" onKeyReleased="#user_KeyReleased" prefHeight="42.0" prefWidth="403.0" styleClass="textField" />
+            <Label fx:id="lblUsername" layoutX="24.0" layoutY="-12.0" prefHeight="25.0" prefWidth="88.0" styleClass="textLabel" text="Username" textFill="#7f8c8d">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="83.0" layoutY="322.0" prefHeight="50.0" prefWidth="436.0" styleClass="textPane" stylesheets="@../Styles/Style.css">
+         <children>
+            <Label fx:id="lblPassword" layoutX="24.0" layoutY="-15.0" prefHeight="25.0" prefWidth="88.0" styleClass="textLabel" text="Password" textFill="#7f8c8d">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="txtPassword" layoutX="22.0" layoutY="4.0" onKeyReleased="#user_KeyReleased" prefHeight="42.0" prefWidth="396.0" styleClass="passwordField" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="83.0" layoutY="410.0" prefHeight="50.0" prefWidth="436.0" styleClass="textPane" stylesheets="@../Styles/Style.css">
+         <children>
+            <Label fx:id="lblConfirmPassword" layoutX="24.0" layoutY="-15.0" prefHeight="25.0" prefWidth="147.0" styleClass="textLabel" text="Confirm Password" textFill="#7f8c8d">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="txtConfirmPassword" layoutX="22.0" layoutY="4.0" onKeyReleased="#user_KeyReleased" prefHeight="42.0" prefWidth="396.0" styleClass="passwordField" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,79 @@
+.gradMovableItem{
+    -fx-background-color: linear-gradient(to bottom right, #3dc1d3, #D6A2E8);
+}
+
+.gradIncome{
+    -fx-background-color: linear-gradient(to bottom right, #786fa6, #c44569);
+}
+
+.gradReports{
+    -fx-background-color: linear-gradient(to bottom right, #22a6b3, #81ecec, #c7ecee);
+}
+
+.FruitsAndVegetables{
+    -fx-background-color: linear-gradient(to bottom right, #f39c12, #feca57);
+}
+
+.Beverages{
+    -fx-background-color: linear-gradient(to bottom right, #0984e3, #48dbfb);
+}
+
+.Spices{
+    -fx-background-color: linear-gradient(to bottom right, #ff4757, #fab1a0);
+}
+
+.Flours{
+    -fx-background-color: linear-gradient(to bottom right,  #a4b0be, #dfe6e9);
+}
+
+.Rice{
+    -fx-background-color: linear-gradient(to bottom right, #cc8e35, #BDC581);
+}
+
+.Snacks{
+    -fx-background-color: linear-gradient(to bottom right, #fd79a8, #ff9ff3);
+}
+
+.Oli{
+    -fx-background-color: linear-gradient(to bottom right,  #55efc4, #81ecec);
+}
+
+.Bakery{
+    -fx-background-color: linear-gradient(to bottom right,  #9b59b6, #D980FA);
+}
+
+.Sweet{
+    -fx-background-color: linear-gradient(to bottom right,  #B33771, #cf6a87);
+}
+
+.Baby{
+    -fx-background-color: linear-gradient(to bottom right,  #f9ca24, #ffdd59);
+}
+
+.Cosmetics{
+    -fx-background-color: linear-gradient(to bottom right,  #FDA7DF, #ffcccc);
+}
+
+.Office{
+    -fx-background-color: linear-gradient(to bottom right,  #4a69bd, #778beb);
+}
+
+.Diary{
+    -fx-background-color: linear-gradient(to bottom right,  #12CBC4, #63cdda);
+}
+
+.Dry{
+    -fx-background-color: linear-gradient(to bottom right,  #535c68, #778ca3);
+}
+
+.Medical{
+    -fx-background-color: linear-gradient(to bottom right,  #A3CB38, #b8e994);
+}
+
+.Electrical{
+    -fx-background-color: linear-gradient(to bottom right,  #ef5777, #ea8685);
+}
+
+.HouseHold{
+    -fx-background-color: linear-gradient(to bottom right,  #1abc9c, #55E6C1);
+}

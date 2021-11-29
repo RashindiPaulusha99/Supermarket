@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="loginContext" prefHeight="956.0" prefWidth="1478.0" styleClass="gradIncome" stylesheets="@../Styles/StyleForAnchopane.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
+   <children>
+      <JFXButton buttonType="RAISED" layoutX="1309.0" layoutY="9.0" onAction="#backToHomeOnAction" prefHeight="56.0" prefWidth="158.0" text="HOME" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </JFXButton>
+      <AnchorPane layoutX="489.0" layoutY="161.0" opacity="0.81" prefHeight="618.0" prefWidth="534.0" style="-fx-background-radius: 25;" styleClass="grad" stylesheets="@../Styles/Style.css">
+         <children>
+            <AnchorPane layoutX="53.0" layoutY="86.0" prefHeight="458.0" prefWidth="421.0">
+               <children>
+                  <ImageView fitHeight="42.0" fitWidth="52.0" layoutX="183.0" layoutY="14.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../assets/icons8-user-90%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="errorMassageContext" layoutX="36.0" layoutY="194.0" prefHeight="21.0" prefWidth="352.0" textFill="RED" />
+                  <CheckBox layoutX="36.0" layoutY="230.0" mnemonicParsing="false" text="Keep Me Signed In" textFill="WHITE" />
+                  <JFXButton buttonType="RAISED" layoutX="115.0" layoutY="408.0" onAction="#openChangePasswordFormOnAction" prefHeight="42.0" prefWidth="192.0" text="Forgot Password?" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnLogin" buttonType="RAISED" layoutX="26.0" layoutY="282.0" onAction="#openSelectItemForm" prefHeight="42.0" prefWidth="378.0" style="-fx-background-color: #ff6b6b; -fx-background-radius: 30;" text="LOG IN" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </JFXButton>
+                  <TextField fx:id="txtUsername" layoutX="22.0" layoutY="81.0" prefHeight="42.0" prefWidth="387.0" promptText="   Username" style="-fx-background-color: white; -fx-background-radius: 25;" />
+                  <PasswordField fx:id="txtPassword" layoutX="21.0" layoutY="145.0" prefHeight="42.0" prefWidth="387.0" promptText="   Password" style="-fx-background-color: white; -fx-background-radius: 25;" />
+                  <TextField layoutX="358.0" layoutY="81.0" prefHeight="43.0" prefWidth="52.0" style="-fx-background-radius: 25; -fx-border-color: white; -fx-border-radius: 25;" styleClass="grad" stylesheets="@../Styles/StyleForAnchopane.css" />
+                  <ImageView fitHeight="28.0" fitWidth="30.0" layoutX="370.0" layoutY="88.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../assets/icons8-user-90%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <TextField layoutX="357.0" layoutY="145.0" prefHeight="43.0" prefWidth="52.0" style="-fx-background-radius: 25; -fx-border-color: white; -fx-border-radius: 25;" styleClass="grad" stylesheets="@../Styles/StyleForAnchopane.css" />
+                  <ImageView fitHeight="21.0" fitWidth="23.0" layoutX="372.0" layoutY="156.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../assets/icons8-password-52.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Label alignment="CENTER" layoutX="26.0" layoutY="28.0" prefHeight="43.0" prefWidth="491.0" text="LOGIN HEAR">
+               <font>
+                  <Font name="System Bold" size="29.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="0.9320388349514563" endY="0.9320388349514563" startX="0.9223300970873787" startY="0.038834951456310676">
+                     <stops>
+                        <Stop color="#2017d0" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="175.0" layoutY="544.0" onAction="#openRegisterFormOnAction" prefHeight="56.0" prefWidth="174.0" text="Register here" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

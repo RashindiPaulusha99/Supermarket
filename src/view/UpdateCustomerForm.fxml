@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="676.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateCustomerFormController">
+   <children>
+      <ImageView fitHeight="676.0" fitWidth="600.0" opacity="0.11" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/обновление-png-8.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnEdit" buttonType="RAISED" layoutX="370.0" layoutY="588.0" onAction="#updateCustomerOnAction" prefHeight="49.0" prefWidth="183.0" style="-fx-background-color: #55E6C1; -fx-background-radius: 30;" text="UPDATE" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+         <font>
+            <Font name="Consolas Bold" size="27.0" />
+         </font>
+      </JFXButton>
+      <Label alignment="CENTER" prefHeight="76.0" prefWidth="600.0" styleClass="gradMovableItem" stylesheets="@../Styles/StyleForAnchopane.css" text="Update Customer" underline="true">
+         <font>
+            <Font name="Britannic Bold" size="33.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.9951456310679612">
+               <stops>
+                  <Stop color="#dd24bb" />
+                  <Stop color="#0b76e1" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <AnchorPane layoutX="54.0" layoutY="453.0" prefHeight="41.0" prefWidth="502.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <ComboBox fx:id="cmbProvince" layoutX="7.0" layoutY="5.0" prefHeight="34.0" prefWidth="491.0" promptText="Province :" styleClass="combo-box" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="52.0" layoutY="386.0" prefHeight="41.0" prefWidth="502.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtCity" layoutX="4.0" layoutY="4.0" onKeyReleased="#city_KeyReleased" prefHeight="34.0" prefWidth="491.0" promptText="City :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="51.0" layoutY="318.0" prefHeight="41.0" prefWidth="502.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtAddress" layoutX="6.0" layoutY="6.0" onKeyReleased="#customerAddress_KeyReleased" prefHeight="34.0" prefWidth="491.0" promptText="Customer Address :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="51.0" layoutY="250.0" prefHeight="41.0" prefWidth="502.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtName" layoutX="7.0" layoutY="4.0" onKeyReleased="#customerName_KeyReleased" prefHeight="34.0" prefWidth="491.0" promptText="Customer Name :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="51.0" layoutY="186.0" prefHeight="41.0" prefWidth="502.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtTitle" layoutX="7.0" layoutY="4.0" onKeyReleased="#customerTitle_KeyReleased" prefHeight="34.0" prefWidth="491.0" promptText="Customer Title :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="51.0" layoutY="118.0" prefHeight="41.0" prefWidth="502.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtId" layoutX="6.0" layoutY="6.0" onAction="#selectCustomerOnAction" prefHeight="34.0" prefWidth="491.0" promptText="Customer Id :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="54.0" layoutY="519.0" prefHeight="41.0" prefWidth="502.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtPostalCode" layoutX="7.0" layoutY="6.0" onKeyReleased="#postalCode_KeyReleased" prefHeight="34.0" prefWidth="491.0" promptText="Postal Code :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

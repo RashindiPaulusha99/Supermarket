@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="620.0" prefWidth="602.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DeleteItemFormController">
+   <children>
+      <ImageView fitHeight="620.0" fitWidth="604.0" opacity="0.1" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/delete-button-icon-vector-sign-symbol-isolated-white-back-background-your-web-mobile-app-design-logo-concept-133829089.jpg" />
+         </image>
+      </ImageView>
+      <JFXButton buttonType="RAISED" layoutX="370.0" layoutY="540.0" onAction="#deleteItemOnAction" prefHeight="49.0" prefWidth="186.0" style="-fx-background-color: #fc5c65; -fx-background-radius: 30;" text="DELETE" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+         <font>
+            <Font name="Consolas Bold" size="27.0" />
+         </font>
+      </JFXButton>
+      <Label alignment="CENTER" layoutY="-2.0" prefHeight="75.0" prefWidth="604.0" styleClass="gradMovableItem" stylesheets="@../Styles/StyleForAnchopane.css" text=" Delete Item" underline="true">
+         <font>
+            <Font name="Britannic Bold" size="33.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.9951456310679612">
+               <stops>
+                  <Stop color="#dd24bb" />
+                  <Stop color="#0b76e1" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <AnchorPane layoutX="43.0" layoutY="470.0" prefHeight="49.0" prefWidth="515.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtqtyOnHand" layoutX="7.0" layoutY="4.0" prefHeight="41.0" prefWidth="502.0" promptText="Quantity On Hand :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="43.0" layoutY="397.0" prefHeight="49.0" prefWidth="515.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtDiscount" layoutX="5.0" layoutY="4.0" prefHeight="41.0" prefWidth="502.0" promptText="Discount :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="43.0" layoutY="324.0" prefHeight="49.0" prefWidth="515.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtUnitPrice" layoutX="7.0" layoutY="4.0" prefHeight="41.0" prefWidth="502.0" promptText="Unit Price :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="43.0" layoutY="250.0" prefHeight="49.0" prefWidth="515.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtPackSize" layoutX="6.0" layoutY="4.0" prefHeight="41.0" prefWidth="502.0" promptText="Pack Size :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="43.0" layoutY="178.0" prefHeight="49.0" prefWidth="515.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtDescription" layoutX="5.0" layoutY="4.0" prefHeight="41.0" prefWidth="502.0" promptText="Description :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="43.0" layoutY="106.0" prefHeight="49.0" prefWidth="515.0" styleClass="textPaneWithoutRadius" stylesheets="@../Styles/Style.css">
+         <children>
+            <TextField fx:id="txtCode" layoutX="6.0" layoutY="4.0" onAction="#selectItemOnAction" prefHeight="41.0" prefWidth="502.0" promptText="Item Code :" styleClass="textField" stylesheets="@../Styles/Style.css" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
