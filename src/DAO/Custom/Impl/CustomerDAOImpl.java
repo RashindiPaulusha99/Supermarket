@@ -137,12 +137,12 @@ public class CustomerDAOImpl implements CustomerDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        Customer customer = session.get(Customer.class, id);
+        Customer customer = session.get(Customer.class,id);
 
         transaction.commit();
         session.close();
 
-        if (customer.getId() == id){
+        if (customer != null){
             return true;
         }else {
             return false;

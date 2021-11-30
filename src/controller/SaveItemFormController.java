@@ -96,28 +96,28 @@ public class SaveItemFormController{
         }else {
             if (itemBO.searchExistsItem(txtItemCode.getText())) {
                 new Alert(Alert.AlertType.WARNING, "Already Exists..").show();
-            }
+            }else {
+                ItemDTO item = new ItemDTO(
+                        txtItemCode.getText(),
+                        cmbDescription.getValue(),
+                        Integer.parseInt(txtqtyOnHand.getText()),
+                        txtPackSize.getText(),
+                        Double.parseDouble(txtUnitPrice.getText()),
+                        Double.parseDouble(txtDiscount.getText())
+                );
 
-            ItemDTO item = new ItemDTO(
-                    txtItemCode.getText(),
-                    cmbDescription.getValue(),
-                    Integer.parseInt(txtqtyOnHand.getText()),
-                    txtPackSize.getText(),
-                    Double.parseDouble(txtUnitPrice.getText()),
-                    Double.parseDouble(txtDiscount.getText())
-            );
-
-            if (itemBO.saveItem(item)) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Saved..").showAndWait();
-                txtItemCode.clear();
-                cmbDescription.getSelectionModel().clearSelection();
-                txtPackSize.clear();
-                txtUnitPrice.clear();
-                txtqtyOnHand.clear();
-                txtDiscount.clear();
-                send.loadData();
-            } else {
-                new Alert(Alert.AlertType.WARNING, "Try Again..").show();
+                if (itemBO.saveItem(item)) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Saved..").showAndWait();
+                    txtItemCode.clear();
+                    cmbDescription.getSelectionModel().clearSelection();
+                    txtPackSize.clear();
+                    txtUnitPrice.clear();
+                    txtqtyOnHand.clear();
+                    txtDiscount.clear();
+                    send.loadData();
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Try Again..").show();
+                }
             }
         }
     }

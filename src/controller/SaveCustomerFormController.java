@@ -93,29 +93,29 @@ public class SaveCustomerFormController implements Initializable {
         }else {
             if (customerBO.ifCustomerExists(txtCustomerId.getText())) {
                 new Alert(Alert.AlertType.WARNING, "Already Exists..").show();
-            }
+            }else{
+                CustomerDTO c1 = new CustomerDTO(
+                        txtCustomerId.getText(),
+                        txtCustomerTitle.getText(),
+                        txtCustomerName.getText(),
+                        txtCustomerAddress.getText(),
+                        txtCity.getText(),
+                        cmbProvince.getValue(),
+                        txtPostalCode.getText()
+                );
 
-            CustomerDTO c1 = new CustomerDTO(
-                    txtCustomerId.getText(),
-                    txtCustomerTitle.getText(),
-                    txtCustomerName.getText(),
-                    txtCustomerAddress.getText(),
-                    txtCity.getText(),
-                    cmbProvince.getValue(),
-                    txtPostalCode.getText()
-            );
-
-            if (customerBO.saveCustomer(c1)) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Saved..").showAndWait();
-                txtCustomerId.clear();
-                txtCustomerTitle.clear();
-                txtCustomerName.clear();
-                txtCustomerAddress.clear();
-                txtCity.clear();
-                cmbProvince.getSelectionModel().clearSelection();
-                txtPostalCode.clear();
-            } else {
-                new Alert(Alert.AlertType.WARNING, "Try Again..").show();
+                if (customerBO.saveCustomer(c1)) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Saved..").showAndWait();
+                    txtCustomerId.clear();
+                    txtCustomerTitle.clear();
+                    txtCustomerName.clear();
+                    txtCustomerAddress.clear();
+                    txtCity.clear();
+                    cmbProvince.getSelectionModel().clearSelection();
+                    txtPostalCode.clear();
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Try Again..").show();
+                }
             }
         }
     }
