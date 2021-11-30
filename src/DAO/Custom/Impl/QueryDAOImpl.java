@@ -1,32 +1,33 @@
 package DAO.Custom.Impl;
 
-import DAO.CrudUtil;
 import DAO.Custom.QueryDAO;
 import DTO.TableDTO;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import util.FactoryConfiguration;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class QueryDAOImpl implements QueryDAO {
 
     public ArrayList<TableDTO> getDetails() throws SQLException, ClassNotFoundException {
-        ResultSet rst = CrudUtil.executeQuery(" SELECT o.orderId,o.cId,o.orderDate,o.ordertime,c.itemCode,c.qty,c.price,c.amount,o.cost FROM `Order` o LEFT JOIN `order detail` c ON o.orderId=c.orderId");
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        String hql = " SELECT o.orderId,o.cId,o.orderDate,o.ordertime,c.itemCode,c.qty,c.price,c.amount,o.cost FROM `Order` o LEFT JOIN `order detail` c ON o.orderId=c.orderId";
+        List<TableDTO> list = session.createSQLQuery(hql).list();
+
         ArrayList<TableDTO> items = new ArrayList<>();
-        while (rst.next()) {
-            items.add(new TableDTO(
-                    rst.getString(1),
-                    rst.getString(2),
-                    rst.getString(3),
-                    rst.getString(4),
-                    rst.getString(5),
-                    rst.getInt(6),
-                    rst.getDouble(7),
-                    rst.getDouble(8),
-                    rst.getDouble(9)
-            ));
+
+        for (TableDTO tableDTO : list) {
+            items.add(tableDTO);
         }
-        //return data
+
+        transaction.commit();
+        session.close();
+
         return items;
     }
 }

@@ -189,7 +189,6 @@ public class ItemDAOImpl implements ItemDAO {
 
     @Override
     public boolean searchExistsItem(String id) throws SQLException, ClassNotFoundException {
-        //return CrudUtil.executeQuery("SELECT * FROM Item WHERE code=?", id).next();
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
