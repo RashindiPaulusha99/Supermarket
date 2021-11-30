@@ -1,8 +1,12 @@
 package Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
+@Entity
 public class Order {
+    @Id
     private String orderId;
     private String cId;
     private LocalDate orderDate;

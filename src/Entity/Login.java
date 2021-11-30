@@ -1,6 +1,11 @@
 package Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Login {
+    @Id
     private String id;
     private String role;
     private String userName;

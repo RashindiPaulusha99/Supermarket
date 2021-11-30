@@ -5,6 +5,7 @@ import DAO.Custom.ItemDAO;
 import Entity.Item;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 import util.FactoryConfiguration;
 
@@ -207,10 +208,55 @@ public class ItemDAOImpl implements ItemDAO {
     @Override
     public boolean updateItemQty(int sellQty, String code) throws SQLException, ClassNotFoundException {
         return CrudUtil.executeUpdate("UPDATE Item SET qtyOnHand =(qtyOnHand - " + sellQty + " ) WHERE code=?", code);
+        /*Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        boolean b;
+
+        String sql = "UPDATE Item SET qtyOnHand = (qtyOnHand - sellQty ) WHERE code = Code";
+        NativeQuery sqlQuery = session.createSQLQuery(sql);
+        sqlQuery.addEntity(Item.class);
+
+        if (sqlQuery.executeUpdate()>0){
+            b = true;
+        }else {
+            b = false;
+        }
+
+        transaction.commit();
+        session.close();
+
+        return b;*/
     }
 
     @Override
     public boolean updateItemQtyByDeleting(int sellQty, String code) throws SQLException, ClassNotFoundException {
         return CrudUtil.executeUpdate("UPDATE Item SET qtyOnHand =(qtyOnHand + " + sellQty + " ) WHERE code=?", code);
+        /*Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        Item item = session.get(Item.class, code);
+        int qtyOnHand = item.getQtyOnHand();
+
+        int qty = (qtyOnHand + sellQty);
+        Item i = new Item(
+                item.getCode(),
+                item.getDescription(),
+                item.getPackSize(),
+                item.getUnitPrice(),
+                item.getDiscount(),
+                qty
+        );
+        session.update(i);
+        Item items = session.get(Item.class, i.getCode());
+
+        transaction.commit();
+        session.close();
+
+        if(i.equals(items)){
+            return true;
+        }else {
+            return false;
+        }*/
     }
 }
