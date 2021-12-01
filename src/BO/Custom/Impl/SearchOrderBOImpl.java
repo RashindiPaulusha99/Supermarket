@@ -98,27 +98,6 @@ public class SearchOrderBOImpl implements SearchOrderBO {
     }
 
     @Override
-    public double findCostForMoAn(LocalDate startDay, LocalDate endDay) throws SQLException, ClassNotFoundException {
-        return orderDAO.findCostForMoAn(startDay,endDay);
-    }
-
-    @Override
-    public ArrayList<DetailsDTO> setMonthlyAnnuallyData(LocalDate startDay, LocalDate endDay) throws SQLException, ClassNotFoundException {
-        ArrayList<Order> orders = orderDAO.setMonthlyAnnuallyData(startDay, endDay);
-        ArrayList<DetailsDTO> details = new ArrayList<>();
-        for (Order order : orders) {
-            details.add(new DetailsDTO(
-                    order.getOrderId(),
-                    order.getcId(),
-                    String.valueOf(order.getOrderDate()),
-                    order.getOrdertime(),
-                    order.getCost()
-            ));
-        }
-        return details;
-    }
-
-    @Override
     public ItemDTO getItem(String code) throws SQLException, ClassNotFoundException {
         Item item = itemDAO.getItem(code);
         return new ItemDTO(

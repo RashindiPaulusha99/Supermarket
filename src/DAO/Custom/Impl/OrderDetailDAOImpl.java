@@ -2,8 +2,13 @@ package DAO.Custom.Impl;
 
 import DAO.CrudUtil;
 import DAO.Custom.OrderDetailDAO;
+import Entity.Customer;
 import Entity.OrderDetail;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import util.FactoryConfiguration;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,12 +18,38 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
     @Override
     public boolean add(OrderDetail temp) throws SQLException, ClassNotFoundException {
         return CrudUtil.executeUpdate("INSERT INTO `Order Detail` VALUES(?,?,?,?,?)", temp.getItemCode(), temp.getOrderId(), temp.getQty(), temp.getPrice(), temp.getAmount());
+        /*Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        Serializable save = session.save(temp);
+
+        transaction.commit();
+        session.close();
+
+        if(save != null){
+            return true;
+        }else {
+            return false;
+        }*/
     }
 
     @Override
     public boolean update(OrderDetail temp) throws SQLException, ClassNotFoundException {
-        return CrudUtil.executeUpdate("UPDATE `Order Detail` SET qty=?, price=?, amount=? WHERE orderId=? AND itemCode=?",
-                temp.getQty(), temp.getPrice(), temp.getAmount(), temp.getOrderId(), temp.getItemCode());
+        return CrudUtil.executeUpdate("UPDATE `Order Detail` SET qty=?, price=?, amount=? WHERE orderId=? AND itemCode=?", temp.getQty(), temp.getPrice(), temp.getAmount(), temp.getOrderId(), temp.getItemCode());
+        /*Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        session.update(temp);
+        OrderDetail orderDetail = session.get(OrderDetail.class, temp.getOrderId());
+
+        transaction.commit();
+        session.close();
+
+        if(temp.equals(orderDetail)){
+            return true;
+        }else {
+            return false;
+        }*/
     }
 
     @Override

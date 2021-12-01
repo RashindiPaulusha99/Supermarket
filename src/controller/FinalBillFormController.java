@@ -78,31 +78,6 @@ public class FinalBillFormController {
     }
 
     public void printOnAction(ActionEvent event) {
-        JasperDesign design = null;
-        try {
-            design = JRXmlLoader.load(this.getClass().getResourceAsStream("../view/Report/Bill.jrxml"));
-            JasperReport jasperReport = JasperCompileManager.compileReport(design);
 
-            String orderNo = lblBillId.getText();
-            String date = lblBillDate.getText();
-            String time = lblBillTime.getText();
-            double grossAmount = Double.parseDouble(lblGrossAmount.getText());
-            double netAmount = Double.parseDouble(lblNetAmount.getText());
-            String payment = lblPayment.getText();
-
-            HashMap map = new HashMap();
-            map.put("orderNo",orderNo);
-            map.put("orderDate",date);
-            map.put("orderTime",time);
-            map.put("grossAmount",grossAmount);
-            map.put("netAmount",netAmount);
-            map.put("payment",payment);
-
-            ObservableList<BillTM> items = tblBillDetails.getItems();
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,map, new JRBeanArrayDataSource(items.toArray()));
-            JasperViewer.viewReport(jasperPrint,false);
-        } catch (JRException e) {
-            e.printStackTrace();
-        }
     }
 }

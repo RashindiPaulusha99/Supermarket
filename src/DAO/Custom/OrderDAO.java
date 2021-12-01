@@ -17,13 +17,9 @@ public interface OrderDAO extends CrudDAO<Order,String > {
 
     ArrayList<Order> setTodayData(String date) throws SQLException, ClassNotFoundException;
 
-    ArrayList<Order> setMonthlyAnnuallyData(LocalDate startDate, LocalDate endDate) throws SQLException, ClassNotFoundException;
-
     Double findCost(String date) throws SQLException, ClassNotFoundException;
 
     Double findCostForCustomer(String id) throws SQLException, ClassNotFoundException;
-
-    Double findCostForMoAn(LocalDate startDate, LocalDate endDate) throws SQLException, ClassNotFoundException;
 
     ArrayList<Order> searchData(String id) throws SQLException, ClassNotFoundException;
 }

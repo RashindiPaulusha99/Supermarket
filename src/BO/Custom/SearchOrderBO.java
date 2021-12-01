@@ -28,10 +28,6 @@ public interface SearchOrderBO extends SuperBO {
 
     String leastMovableItems() throws SQLException, ClassNotFoundException;
 
-    double findCostForMoAn(LocalDate startDay, LocalDate endDay) throws SQLException, ClassNotFoundException;
-
-    ArrayList<DetailsDTO> setMonthlyAnnuallyData(LocalDate startDay, LocalDate endDay) throws SQLException, ClassNotFoundException;
-
     ItemDTO getItem(String code) throws SQLException, ClassNotFoundException;
 
     List<String> getItemIds() throws SQLException, ClassNotFoundException;

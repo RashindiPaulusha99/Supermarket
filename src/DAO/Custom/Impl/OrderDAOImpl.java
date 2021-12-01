@@ -2,28 +2,78 @@ package DAO.Custom.Impl;
 
 import DAO.CrudUtil;
 import DAO.Custom.OrderDAO;
+import Entity.Customer;
 import Entity.Order;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
+import util.FactoryConfiguration;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public boolean add(Order order) throws SQLException, ClassNotFoundException {
         return CrudUtil.executeUpdate("INSERT INTO `Order` VALUES(?,?,?,?,?)", order.getOrderId(), order.getcId(), order.getOrderDate(), order.getOrdertime(), order.getCost());
+        /*Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        Serializable save = session.save(order);
+
+        transaction.commit();
+        session.close();
+
+        if(save != null){
+            return true;
+        }else {
+            return false;
+        }*/
     }
 
     @Override
     public boolean update(Order order) throws SQLException, ClassNotFoundException {
         return CrudUtil.executeUpdate("UPDATE `Order` SET cId=?, orderDate=?, ordertime=?, cost=? WHERE orderId=?", order.getcId(), order.getOrderDate(), order.getOrdertime(), order.getCost(), order.getOrderId());
+        /*Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        session.update(order);
+        Order orders = session.get(Order.class, order.getOrderId());
+
+        transaction.commit();
+        session.close();
+
+        if(order.equals(orders)){
+            return true;
+        }else {
+            return false;
+        }*/
     }
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
         return CrudUtil.executeUpdate("DELETE FROM `Order` WHERE orderId=?", id);
+        /*Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        Order order = session.get(Order.class, id);
+        session.delete(order);
+        Order o = session.get(Order.class, id);
+
+        transaction.commit();
+        session.close();
+
+        if(o == null){
+            return true;
+        }else {
+            return false;
+        }*/
     }
 
     @Override
@@ -38,10 +88,25 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public String getOrderId() throws SQLException, ClassNotFoundException {
-        ResultSet rst = CrudUtil.executeQuery("SELECT orderId FROM `Order` ORDER BY orderId DESC LIMIT 1");
-        if (rst.next()){
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        String sql = "SELECT * FROM `Order` ORDER BY orderId DESC LIMIT 1";
+        NativeQuery sqlQuery = session.createSQLQuery(sql);
+        sqlQuery.addEntity(Order.class);
+        List<Order> list = sqlQuery.list();
+        String id = null;
+
+        for (Order order : list) {
+            id = order.getOrderId();
+        }
+
+        transaction.commit();
+        session.close();
+
+        if (id != null){
             //if data has in database ,split orderId
-            int tempId = Integer.parseInt(rst.getString(1).split("-")[1]);
+            int tempId = Integer.parseInt(id.split("-")[1]);
             tempId = tempId+1;
 
             if (tempId <= 9){
@@ -59,7 +124,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public ArrayList<Order> searchOrder(String id) throws SQLException, ClassNotFoundException {
-        ResultSet rst = CrudUtil.executeQuery("SELECT * FROM `order` WHERE cId=?", id);
+        /*ResultSet rst = CrudUtil.executeQuery("SELECT * FROM `order` WHERE cId=?", id);
         ArrayList<Order> order = new ArrayList<>();
         while (rst.next()){
             order.add(new Order(
@@ -70,7 +135,29 @@ public class OrderDAOImpl implements OrderDAO {
                     rst.getDouble(5)
             ));
         }
-        return order;
+        return order;*/
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        String hql = "FROM 'order' WHERE cId=:id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id",id)
+
+        List<Customer> list = query.list();
+        ArrayList<Customer> customers = new ArrayList<>();
+
+        for (Customer customer : list) {
+            customers.add(customer);
+        }
+
+        transaction.commit();
+        session.close();
+
+        if (order != null){
+            return order;
+        }else {
+            return null;
+        }
     }
 
     @Override
@@ -108,24 +195,6 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public ArrayList<Order> setMonthlyAnnuallyData(LocalDate startDate, LocalDate endDate) throws SQLException, ClassNotFoundException {
-        ResultSet rst = CrudUtil.executeQuery("SELECT * FROM `Order` WHERE orderDate BETWEEN '"+startDate+"' AND '"+endDate+"'");
-        ArrayList<Order> items = new ArrayList<>();
-        while (rst.next()) {
-            items.add(new Order(
-                    rst.getString(1),
-                    rst.getString(2),
-                    LocalDate.parse(rst.getString(3)),
-                    rst.getString(4),
-                    rst.getDouble(5)
-
-            ));
-        }
-        //return data
-        return items;
-    }
-
-    @Override
     public Double findCost(String date) throws SQLException, ClassNotFoundException {
         ResultSet rst = CrudUtil.executeQuery("SELECT SUM(cost) FROM `Order` WHERE orderDate=?", date);
         if (rst.next()){
@@ -138,16 +207,6 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public Double findCostForCustomer(String id) throws SQLException, ClassNotFoundException {
         ResultSet rst = CrudUtil.executeQuery("SELECT SUM(cost) FROM `Order` WHERE cId=?", id);
-        if (rst.next()){
-            return rst.getDouble(1);
-        }else {
-            return null;
-        }
-    }
-
-    @Override
-    public Double findCostForMoAn(LocalDate startDate, LocalDate endDate) throws SQLException, ClassNotFoundException {
-        ResultSet rst = CrudUtil.executeQuery("SELECT SUM(cost) FROM `Order` WHERE orderDate BETWEEN '"+startDate+"' AND '"+endDate+"'");
         if (rst.next()){
             return rst.getDouble(1);
         }else {
