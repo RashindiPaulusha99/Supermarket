@@ -2,6 +2,7 @@ package controller;
 
 import BO.BOFactory;
 import BO.Custom.PlaceOrderBO;
+import Entity.Customer;
 import ValidationUtil.Validation;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.Animation;
@@ -361,17 +362,27 @@ public class PlaceOrderFormController {
                 ));
             }
 
+            Customer customer = new Customer(
+                    cmbCustomerId.getValue(),
+                    txtCustomerTitle.getText(),
+                    txtCustomerName.getText(),
+                    txtCustomerAddress.getText(),
+                    txtCity.getText(),
+                    txtProvince.getText(),
+                    txtPostalCode.getText()
+            );
+
             //create order object
             order = new OrderDTO(
                     lblOrderId.getText(),
-                    cmbCustomerId.getValue(),
+                    customer.getId(),
                     lblOrderDate.getText(),
                     lblOrderTime.getText(),
                     ttotal,
                     items
             );
 
-            if (placeOrderBO.placeOrder(order)) {
+            if (placeOrderBO.placeOrder(order,customer)) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Success.").showAndWait();
                 setOrderId();
 

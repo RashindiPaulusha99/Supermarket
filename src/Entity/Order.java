@@ -8,6 +8,10 @@ public class Order {
     @Id
     private String orderId;
     private String cId;
+    
+    @ManyToOne
+    private Customer customer;
+
     private LocalDate orderDate;
     private String ordertime;
     private double cost;
@@ -15,12 +19,24 @@ public class Order {
     public Order() {
     }
 
-    public Order(String orderId, String cId, LocalDate orderDate, String ordertime, double cost) {
+    public Order(String orderId, String cId, Customer customer, LocalDate orderDate, String ordertime, double cost) {
+        this.orderId = orderId;
+        this.cId = cId;
+        this.customer = customer;
+        this.orderDate = orderDate;
+        this.ordertime = ordertime;
+        this.cost = cost;
+    }
+
+    public Order(String orderId, Customer customer, LocalDate orderDate, String ordertime, double cost) {
         this.setOrderId(orderId);
-        this.setcId(cId);
+        this.setCustomer(customer);
         this.setOrderDate(orderDate);
         this.setOrdertime(ordertime);
         this.setCost(cost);
+    }
+
+    public Order(String string, String string1, LocalDate parse, String string2, double aDouble) {
     }
 
     public String getOrderId() {
@@ -37,6 +53,14 @@ public class Order {
 
     public void setcId(String cId) {
         this.cId = cId;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public LocalDate getOrderDate() {
@@ -67,7 +91,8 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "orderId='" + orderId + '\'' +
-                ", cId='" + cId + '\'' +
+                "cId='" + cId + '\'' +
+                ", customer='" + customer + '\'' +
                 ", orderDate=" + orderDate +
                 ", ordertime='" + ordertime + '\'' +
                 ", cost=" + cost +

@@ -2,9 +2,13 @@ package Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Customer {
+
     @Id
     private String id;
     private String title;
@@ -14,7 +18,21 @@ public class Customer {
     private String province;
     private String postalCode;
 
+    @OneToMany(mappedBy = "customer")
+    private List<Order> order = new ArrayList<>();
+
     public Customer() {
+    }
+
+    public Customer(String id, String title, String name, String address, String city, String province, String postalCode, List<Order> order) {
+        this.id = id;
+        this.title = title;
+        this.name = name;
+        this.address = address;
+        this.city = city;
+        this.province = province;
+        this.postalCode = postalCode;
+        this.setOrder(getOrder());
     }
 
     public Customer(String id, String title, String name, String address, String city, String province, String postalCode) {
@@ -83,6 +101,14 @@ public class Customer {
         this.postalCode = postalCode;
     }
 
+    public List<Order> getOrder() {
+        return order;
+    }
+
+    public void setOrder(List<Order> order) {
+        this.order = order;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -95,4 +121,5 @@ public class Customer {
                 ", postalCode='" + postalCode + '\'' +
                 '}';
     }
+
 }

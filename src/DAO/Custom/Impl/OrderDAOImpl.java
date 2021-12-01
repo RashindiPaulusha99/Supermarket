@@ -2,10 +2,13 @@ package DAO.Custom.Impl;
 
 import DAO.CrudUtil;
 import DAO.Custom.OrderDAO;
+import Entity.Item;
+import Entity.Login;
 import Entity.Order;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 import util.FactoryConfiguration;
 
 import java.io.Serializable;
@@ -19,8 +22,8 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public boolean add(Order order) throws SQLException, ClassNotFoundException {
-        return CrudUtil.executeUpdate("INSERT INTO `Order` VALUES(?,?,?,?,?)", order.getOrderId(), order.getcId(), order.getOrderDate(), order.getOrdertime(), order.getCost());
-        /*Session session = FactoryConfiguration.getInstance().getSession();
+        //return CrudUtil.executeUpdate("INSERT INTO `Order` VALUES(?,?,?,?,?)", order.getOrderId(), order.getCustomer(), order.getOrderDate(), order.getOrdertime(), order.getCost());
+        Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
         Serializable save = session.save(order);
@@ -32,7 +35,7 @@ public class OrderDAOImpl implements OrderDAO {
             return true;
         }else {
             return false;
-        }*/
+        }
     }
 
     @Override
@@ -111,12 +114,31 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public Double findCost(String date) throws SQLException, ClassNotFoundException {
-        ResultSet rst = CrudUtil.executeQuery("SELECT SUM(cost) FROM `Order` WHERE orderDate=?", date);
-        if (rst.next()){
-            return rst.getDouble(1);
-        }else {
-            return null;
+//        ResultSet rst = CrudUtil.executeQuery("SELECT SUM(cost) FROM `Order` WHERE orderDate=?", date);
+//        if (rst.next()){
+//            return rst.getDouble(1);
+//        }else {
+//            return null;
+//        }
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        String hql = "SELECT SUM(cost) FROM Order WHERE orderDate=:orderdate";
+        Query sqlQuery = session.createQuery(hql);
+        sqlQuery.setParameter("orderdate",LocalDate.parse(date));
+        //sqlQuery.addEntity(Order.class);
+        List<Order> list = sqlQuery.list();
+
+        double cost = 0;
+
+        for (Order order : list) {
+            cost =order.getCost();
         }
+
+        transaction.commit();
+        session.close();
+
+        return cost;
     }
 
 }

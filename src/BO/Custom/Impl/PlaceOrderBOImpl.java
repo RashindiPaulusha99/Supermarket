@@ -29,43 +29,26 @@ public class PlaceOrderBOImpl implements PlaceOrderBO {
     private CustomerDAO customerDAO = (CustomerDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.CUSTOMER);
 
     //data set to tables in database
-    public boolean placeOrder(OrderDTO order){
+    public boolean placeOrder(OrderDTO order,Customer customer) throws SQLException, ClassNotFoundException {
         //save order
-        Connection con = null;
-        try {
-            //transaction-----------
-            con = DbConnection.getInstance().getConnection();
-            con.setAutoCommit(false);//stop put data to table in little time
-            //--------------------------
-
-            boolean ifInsertOrder = orderDAO.add(new Order(order.getOrderId(),order.getCustomerId(), LocalDate.parse(order.getOrderDate()),order.getOrderTime(),order.getCost()));
+            boolean ifInsertOrder = orderDAO.add(new Order(order.getOrderId(),customer.getId(),LocalDate.parse(order.getOrderDate()),order.getOrderTime(),order.getCost()));
 
             if(ifInsertOrder){//if data save
 
-                if(saveOrderDetails(order)) {
-                    con.commit();//three tables update
-                    return true;
-                }else {
-                    con.rollback();//resend data bundle
-                    return false;
+                try {
+                    if(saveOrderDetails(order)) {
+                        return true;
+                    }else {
+                        return false;
+                    }
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
                 }
             }else {
-                con.rollback();
                 return false;
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally {
-            try {
-
-                con.setAutoCommit(true);
-
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
         return false;
     }
 

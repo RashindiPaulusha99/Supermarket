@@ -34,7 +34,7 @@ public class SearchOrderBOImpl implements SearchOrderBO {
         for (Order order : orders) {
             details.add(new DetailsDTO(
                     order.getOrderId(),
-                    order.getcId(),
+                    order.getCustomer(),
                     String.valueOf(order.getOrderDate()),
                     order.getOrdertime(),
                     order.getCost()

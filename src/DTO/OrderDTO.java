@@ -1,5 +1,7 @@
 package DTO;
 
+import Entity.Customer;
+
 import java.util.ArrayList;
 
 public class OrderDTO {
@@ -23,6 +25,9 @@ public class OrderDTO {
     }
 
     public OrderDTO(String string, double aDouble, double aDouble1, int anInt) {
+    }
+
+    public OrderDTO(String text, Customer customer, String text1, String text2, double ttotal, ArrayList<OrderDetailDTO> items) {
     }
 
     public String getOrderId() {

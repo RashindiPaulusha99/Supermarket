@@ -1,5 +1,7 @@
 package DTO;
 
+import Entity.Customer;
+
 public class DetailsDTO {
     private String orderId;
     private String customerId;
@@ -16,6 +18,9 @@ public class DetailsDTO {
         this.setOrderDate(orderDate);
         this.setOrderTime(orderTime);
         this.setCost(cost);
+    }
+
+    public DetailsDTO(String orderId, Customer customer, String orderDate, String ordertime, double cost) {
     }
 
     public String getOrderId() {

@@ -5,6 +5,7 @@ import DTO.CustomerDTO;
 import DTO.ItemDTO;
 import DTO.OrderDTO;
 import DTO.OrderDetailDTO;
+import Entity.Customer;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public interface PlaceOrderBO extends SuperBO {
 
-    boolean placeOrder(OrderDTO order) throws SQLException, ClassNotFoundException;
+    boolean placeOrder(OrderDTO order, Customer customer) throws SQLException, ClassNotFoundException;
 
     boolean saveOrderDetails(OrderDTO order) throws SQLException, ClassNotFoundException;
 

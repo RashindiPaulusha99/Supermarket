@@ -2,11 +2,18 @@ package DAO.Custom.Impl;
 
 import DAO.CrudUtil;
 import DAO.Custom.OrderDetailDAO;
+import Entity.Order;
 import Entity.OrderDetail;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
+import util.FactoryConfiguration;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderDetailDAOImpl implements OrderDetailDAO {
 
@@ -55,7 +62,24 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
             return rst.getString(1);
         }
         return null;
+        /*Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
 
+        String sql = "SELECT itemCode,COUNT(qty) FROM `order detail` GROUP BY (itemCode) ORDER BY qty DESC LIMIT 1";
+        NativeQuery sqlQuery = session.createSQLQuery(sql);
+        sqlQuery.addEntity(OrderDetail.class);
+        List<OrderDetail> list = sqlQuery.list();
+        String id = null;
+
+        for (OrderDetail orderDetail : list) {
+            id = orderDetail.getItemCode();
+        }
+
+
+        transaction.commit();
+        session.close();
+
+        return id;*/
     }
 
     @Override
