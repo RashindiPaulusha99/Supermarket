@@ -19,8 +19,8 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public boolean add(Order order) throws SQLException, ClassNotFoundException {
-        //return CrudUtil.executeUpdate("INSERT INTO `Order` VALUES(?,?,?,?,?)", order.getOrderId(), order.getcId(), order.getOrderDate(), order.getOrdertime(), order.getCost());
-        Session session = FactoryConfiguration.getInstance().getSession();
+        return CrudUtil.executeUpdate("INSERT INTO `Order` VALUES(?,?,?,?,?)", order.getOrderId(), order.getcId(), order.getOrderDate(), order.getOrdertime(), order.getCost());
+        /*Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
         Serializable save = session.save(order);
@@ -32,7 +32,7 @@ public class OrderDAOImpl implements OrderDAO {
             return true;
         }else {
             return false;
-        }
+        }*/
     }
 
     @Override

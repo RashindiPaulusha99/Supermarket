@@ -1,16 +1,13 @@
 package DAO.Custom.Impl;
 
-import DAO.CrudUtil;
 import DAO.Custom.ItemDAO;
 import Entity.Item;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 import util.FactoryConfiguration;
 
 import java.io.Serializable;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -206,18 +203,20 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean updateItemQty(int sellQty, String code) throws SQLException, ClassNotFoundException {
-        return CrudUtil.executeUpdate("UPDATE Item SET qtyOnHand =(qtyOnHand - " + sellQty + " ) WHERE code=?", code);
-        /*Session session = FactoryConfiguration.getInstance().getSession();
+    public boolean updateItemQty(int sellQty, String Code) throws SQLException, ClassNotFoundException {
+        Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
         boolean b;
 
-        String sql = "UPDATE Item SET qtyOnHand = (qtyOnHand - sellQty ) WHERE code = Code";
-        NativeQuery sqlQuery = session.createSQLQuery(sql);
-        sqlQuery.addEntity(Item.class);
+        String hql = "UPDATE Item SET qtyOnHand = qtyOnHand - :qtyonhand WHERE code = :ItemCode";
+        Query query = session.createQuery(hql);
+        query.setParameter("qtyonhand", sellQty);
+        query.setParameter("ItemCode", Code);
 
-        if (sqlQuery.executeUpdate()>0){
+        Item item = session.get(Item.class,Code);
+
+        if (item.getCode().equals(Code)){
             b = true;
         }else {
             b = false;
@@ -226,7 +225,7 @@ public class ItemDAOImpl implements ItemDAO {
         transaction.commit();
         session.close();
 
-        return b;*/
+        return b;
     }
 
 }
