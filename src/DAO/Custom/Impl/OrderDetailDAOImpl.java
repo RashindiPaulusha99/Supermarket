@@ -2,19 +2,11 @@ package DAO.Custom.Impl;
 
 import DAO.CrudUtil;
 import DAO.Custom.OrderDetailDAO;
-import Entity.Customer;
-import Entity.Login;
 import Entity.OrderDetail;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.query.NativeQuery;
-import util.FactoryConfiguration;
 
-import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class OrderDetailDAOImpl implements OrderDetailDAO {
 
@@ -38,21 +30,7 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
 
     @Override
     public boolean update(OrderDetail temp) throws SQLException, ClassNotFoundException {
-        return CrudUtil.executeUpdate("UPDATE `Order Detail` SET qty=?, price=?, amount=? WHERE orderId=? AND itemCode=?", temp.getQty(), temp.getPrice(), temp.getAmount(), temp.getOrderId(), temp.getItemCode());
-        /*Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-
-        session.update(temp);
-        OrderDetail orderDetail = session.get(OrderDetail.class, temp.getOrderId());
-
-        transaction.commit();
-        session.close();
-
-        if(temp.equals(orderDetail)){
-            return true;
-        }else {
-            return false;
-        }*/
+        throw new UnsupportedOperationException("No Supported Yet.");
     }
 
     @Override

@@ -2,12 +2,10 @@ package DAO.Custom.Impl;
 
 import DAO.CrudUtil;
 import DAO.Custom.OrderDAO;
-import Entity.Customer;
 import Entity.Order;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
-import org.hibernate.query.Query;
 import util.FactoryConfiguration;
 
 import java.io.Serializable;
@@ -21,8 +19,8 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public boolean add(Order order) throws SQLException, ClassNotFoundException {
-        return CrudUtil.executeUpdate("INSERT INTO `Order` VALUES(?,?,?,?,?)", order.getOrderId(), order.getcId(), order.getOrderDate(), order.getOrdertime(), order.getCost());
-        /*Session session = FactoryConfiguration.getInstance().getSession();
+        //return CrudUtil.executeUpdate("INSERT INTO `Order` VALUES(?,?,?,?,?)", order.getOrderId(), order.getcId(), order.getOrderDate(), order.getOrdertime(), order.getCost());
+        Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
         Serializable save = session.save(order);
@@ -34,26 +32,12 @@ public class OrderDAOImpl implements OrderDAO {
             return true;
         }else {
             return false;
-        }*/
+        }
     }
 
     @Override
     public boolean update(Order order) throws SQLException, ClassNotFoundException {
-        return CrudUtil.executeUpdate("UPDATE `Order` SET cId=?, orderDate=?, ordertime=?, cost=? WHERE orderId=?", order.getcId(), order.getOrderDate(), order.getOrdertime(), order.getCost(), order.getOrderId());
-        /*Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-
-        session.update(order);
-        Order orders = session.get(Order.class, order.getOrderId());
-
-        transaction.commit();
-        session.close();
-
-        if(order.equals(orders)){
-            return true;
-        }else {
-            return false;
-        }*/
+        throw new UnsupportedOperationException("No Supported Yet.");
     }
 
     @Override
