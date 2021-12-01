@@ -22,5 +22,4 @@ public interface ItemBO extends SuperBO {
 
     boolean updateItemQty(int sellQty, String code) throws SQLException, ClassNotFoundException;
 
-    boolean updateItemQtyByDeleting(int sellQty, String code) throws SQLException, ClassNotFoundException;
 }

@@ -229,34 +229,4 @@ public class ItemDAOImpl implements ItemDAO {
         return b;*/
     }
 
-    @Override
-    public boolean updateItemQtyByDeleting(int sellQty, String code) throws SQLException, ClassNotFoundException {
-        return CrudUtil.executeUpdate("UPDATE Item SET qtyOnHand =(qtyOnHand + " + sellQty + " ) WHERE code=?", code);
-        /*Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-
-        Item item = session.get(Item.class, code);
-        int qtyOnHand = item.getQtyOnHand();
-
-        int qty = (qtyOnHand + sellQty);
-        Item i = new Item(
-                item.getCode(),
-                item.getDescription(),
-                item.getPackSize(),
-                item.getUnitPrice(),
-                item.getDiscount(),
-                qty
-        );
-        session.update(i);
-        Item items = session.get(Item.class, i.getCode());
-
-        transaction.commit();
-        session.close();
-
-        if(i.equals(items)){
-            return true;
-        }else {
-            return false;
-        }*/
-    }
 }

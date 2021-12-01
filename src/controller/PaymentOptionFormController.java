@@ -47,13 +47,6 @@ public class PaymentOptionFormController {
             new Alert(Alert.AlertType.WARNING,"Select Payment Option.").show();
         }else {
             new Alert(Alert.AlertType.CONFIRMATION,"Payment Proceeded.").showAndWait();
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/FinalBillForm.fxml"));
-            Parent parent = loader.load();
-            FinalBillFormController controller = loader.<FinalBillFormController>getController();
-            controller.setData(lblOrderId.getText(),lblOrderDate.getText(),lblOrderTime.getText(), Double.parseDouble(lblTotal.getText()),payment,amount);
-            Stage window = (Stage) paymentContext.getScene().getWindow();
-            window.setScene(new Scene(parent));
         }
     }
 

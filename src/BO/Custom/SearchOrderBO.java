@@ -12,8 +12,6 @@ import java.util.List;
 
 public interface SearchOrderBO extends SuperBO {
 
-    ArrayList<OrderDetailDTO> searchOrderDetails(String oid) throws SQLException, ClassNotFoundException;
-
     double findCost(String date) throws SQLException, ClassNotFoundException;
 
     ArrayList<DetailsDTO> setTodayData(String date) throws SQLException, ClassNotFoundException;
@@ -32,11 +30,4 @@ public interface SearchOrderBO extends SuperBO {
 
     List<String> getItemIds() throws SQLException, ClassNotFoundException;
 
-    ArrayList<DetailsDTO> searchData(String value) throws SQLException, ClassNotFoundException;
-    
-    ArrayList<DetailsDTO> getOrderDetailsToSearch() throws SQLException, ClassNotFoundException;
-
-    ArrayList<DetailsDTO> searchOrder(String id) throws SQLException, ClassNotFoundException;
-
-    double findCostForCustomer(String id) throws SQLException, ClassNotFoundException;
 }

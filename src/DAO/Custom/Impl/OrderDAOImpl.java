@@ -58,22 +58,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        return CrudUtil.executeUpdate("DELETE FROM `Order` WHERE orderId=?", id);
-        /*Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-
-        Order order = session.get(Order.class, id);
-        session.delete(order);
-        Order o = session.get(Order.class, id);
-
-        transaction.commit();
-        session.close();
-
-        if(o == null){
-            return true;
-        }else {
-            return false;
-        }*/
+        throw new UnsupportedOperationException("No Supported Yet.");
     }
 
     @Override
@@ -123,60 +108,6 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public ArrayList<Order> searchOrder(String id) throws SQLException, ClassNotFoundException {
-        /*ResultSet rst = CrudUtil.executeQuery("SELECT * FROM `order` WHERE cId=?", id);
-        ArrayList<Order> order = new ArrayList<>();
-        while (rst.next()){
-            order.add(new Order(
-                    rst.getString(1),
-                    rst.getString(2),
-                    LocalDate.parse(rst.getString(3)),
-                    rst.getString(4),
-                    rst.getDouble(5)
-            ));
-        }
-        return order;*/
-        Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-
-        String hql = "FROM 'order' WHERE cId=:id";
-        Query query = session.createQuery(hql);
-        query.setParameter("id",id)
-
-        List<Customer> list = query.list();
-        ArrayList<Customer> customers = new ArrayList<>();
-
-        for (Customer customer : list) {
-            customers.add(customer);
-        }
-
-        transaction.commit();
-        session.close();
-
-        if (order != null){
-            return order;
-        }else {
-            return null;
-        }
-    }
-
-    @Override
-    public ArrayList<Order> getOrderDetailsToSearch() throws SQLException, ClassNotFoundException {
-        ResultSet rst = CrudUtil.executeQuery("SELECT * FROM `order`");
-        ArrayList<Order> order = new ArrayList<>();
-        while (rst.next()){
-            order.add(new Order(
-                    rst.getString(1),
-                    rst.getString(2),
-                    LocalDate.parse(rst.getString(3)),
-                    rst.getString(4),
-                    rst.getDouble(5)
-            ));
-        }
-        return order;
-    }
-
-    @Override
     public ArrayList<Order> setTodayData(String date) throws SQLException, ClassNotFoundException {
         ResultSet rst = CrudUtil.executeQuery("SELECT * FROM `Order` WHERE orderDate=?",date);
         ArrayList<Order> items = new ArrayList<>();
@@ -204,29 +135,4 @@ public class OrderDAOImpl implements OrderDAO {
         }
     }
 
-    @Override
-    public Double findCostForCustomer(String id) throws SQLException, ClassNotFoundException {
-        ResultSet rst = CrudUtil.executeQuery("SELECT SUM(cost) FROM `Order` WHERE cId=?", id);
-        if (rst.next()){
-            return rst.getDouble(1);
-        }else {
-            return null;
-        }
-    }
-
-    @Override
-    public ArrayList<Order> searchData(String id) throws SQLException, ClassNotFoundException {
-        ResultSet rst = CrudUtil.executeQuery("SELECT * FROM `order` WHERE orderId LIKE '%"+id+"%'");
-        ArrayList<Order> order = new ArrayList<>();
-        while (rst.next()){
-            order.add(new Order(
-                    rst.getString(1),
-                    rst.getString(2),
-                    LocalDate.parse(rst.getString(3)),
-                    rst.getString(4),
-                    rst.getDouble(5)
-            ));
-        }
-        return order;
-    }
 }

@@ -3,15 +3,18 @@ package DAO.Custom.Impl;
 import DAO.CrudUtil;
 import DAO.Custom.OrderDetailDAO;
 import Entity.Customer;
+import Entity.Login;
 import Entity.OrderDetail;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
 import util.FactoryConfiguration;
 
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderDetailDAOImpl implements OrderDetailDAO {
 
@@ -68,33 +71,13 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
     }
 
     @Override
-    public ArrayList<OrderDetail> searchOrderDetails(String id) throws SQLException, ClassNotFoundException {
-        ResultSet rst = CrudUtil.executeQuery("SELECT * FROM `order detail` WHERE orderId=?", id);
-        ArrayList<OrderDetail> item = new ArrayList<>();
-        while (rst.next()){
-            item.add(new OrderDetail(
-                    rst.getString(1),
-                    rst.getString(2),
-                    rst.getInt(3),
-                    rst.getDouble(4),
-                    rst.getDouble(5)
-            ));
-        }
-        return item;
-    }
-
-    @Override
-    public boolean deleteOrderDetail(String oid, String code) throws SQLException, ClassNotFoundException {
-        return CrudUtil.executeUpdate("DELETE FROM `order detail` WHERE orderId=? AND itemCode=?", oid, code);
-    }
-
-    @Override
     public String mostMovableItems() throws SQLException, ClassNotFoundException {
         ResultSet rst = CrudUtil.executeQuery("SELECT itemCode ,COUNT(qty) FROM `order detail` GROUP BY (itemCode) ORDER BY qty DESC LIMIT 1");
         if (rst.next()){
             return rst.getString(1);
         }
         return null;
+
     }
 
     @Override
@@ -104,5 +87,6 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
             return rst.getString(1);
         }
         return null;
+
     }
 }

@@ -15,15 +15,10 @@ import Entity.Item;
 import Entity.Order;
 import Entity.OrderDetail;
 import db.DbConnection;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import util.FactoryConfiguration;
 
-import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PlaceOrderBOImpl implements PlaceOrderBO {
@@ -97,127 +92,6 @@ public class PlaceOrderBOImpl implements PlaceOrderBO {
     //modify item qty
     public  boolean updateQty(String itemCode, int qty) throws SQLException, ClassNotFoundException {
         return itemDAO.updateItemQty(qty, itemCode);
-    }
-
-    public boolean updateOrder(OrderDTO order){
-        //save order
-        Connection con = null;
-        try {
-            //transaction-----------
-            con = DbConnection.getInstance().getConnection();
-            con.setAutoCommit(false);//stop put data to table in little time
-            //--------------------------
-
-            boolean ifUpdateOrder = orderDAO.update(new Order(order.getOrderId(),order.getCustomerId(), LocalDate.parse(order.getOrderDate()),order.getOrderTime(),order.getCost()));
-
-            if(ifUpdateOrder){//if data save
-
-                if(updateOrderDetails(order)) {
-                    con.commit();//three tables update
-                    return true;
-                }else {
-                    con.rollback();//resend data bundle
-                    return false;
-                }
-            }else {
-                con.rollback();
-                return false;
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally {
-            try {
-
-                con.setAutoCommit(true);
-
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-        return false;
-    }
-
-    public boolean updateOrderDetails(OrderDTO orderDTO) throws SQLException, ClassNotFoundException {
-        //data pass itemDetails table
-        for (OrderDetailDTO temp : orderDTO.getItems()) {
-
-            boolean ifOrderDetailsUpdated = orderDetailDAO.update(new OrderDetail(temp.getItemCode(),temp.getOrderId(),temp.getSellQty(),temp.getPrice(),temp.getAmount()));
-
-            if(ifOrderDetailsUpdated){
-
-                if (updateQty(temp.getItemCode(),temp.getSellQty())){
-
-                }else {
-                    return false;
-                }
-            }else {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean deleteOrder(String id,ArrayList<OrderDetailDTO> items) throws SQLException, ClassNotFoundException {
-
-        Connection con = null;
-        try {
-            con = DbConnection.getInstance().getConnection();
-            con.setAutoCommit(false);
-
-            boolean ifDeleteOrder = orderDAO.delete(id);
-
-            if(ifDeleteOrder){
-
-                for (int i = 0; i < items.size(); i++) {
-                    updateQtyByDeleting(items.get(i).getSellQty(),items.get(i).getItemCode());
-                }
-                con.commit();
-                return true;
-
-            }else {
-                con.rollback();
-                return false;
-            }
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally {
-            try {
-
-                con.setAutoCommit(true);
-
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-
-        return false;
-    }
-
-    public boolean deleteOrderDetail(String id, String code, ArrayList<OrderDetailDTO> items) throws SQLException, ClassNotFoundException {
-
-        boolean ifDeletedOrderDetail = orderDetailDAO.deleteOrderDetail(id, code);
-
-        if(ifDeletedOrderDetail){
-
-            if (updateQtyByDeleting(items.get(0).getSellQty(),code)) {
-
-            }else {
-                return false;
-            }
-
-        }else {
-            return false;
-        }
-        return true;
-    }
-
-    public  boolean updateQtyByDeleting(int sellQty, String itemCode) throws SQLException, ClassNotFoundException {
-        return itemDAO.updateItemQtyByDeleting(sellQty, itemCode);
     }
 
     @Override
